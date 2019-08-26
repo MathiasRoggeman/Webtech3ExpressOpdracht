@@ -17,12 +17,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-// Redirect to list
 app.get("/", (req, res) => {
   res.redirect("/list");
 });
 
-// list all products
 app.get("/list", (req, res) => {
   db.collection("overtredingen")
     .find()
@@ -32,12 +30,11 @@ app.get("/list", (req, res) => {
       res.render("overtreding.ejs", { overtredingen: result });
     });
 });
-// Show the search form
+
 app.get("/search", (req, res) => {
   res.render("search.ejs", {});
 });
 
-// Find all comments for a post
 app.post("/search", (req, res) => {
   var opnameplaats_straat = req.body.opnameplaats_straat;
   console.log(opnameplaats_straat);
@@ -61,5 +58,31 @@ app.post("/search", (req, res) => {
       }
       console.log(list);
       res.render("search_result.ejs", { list });
+    });
+});
+// Find all comments for a post
+app.post("/search2", (req, res) => {
+  var aantal_overtredingen_snelheid = req.body.aantal_overtredingen_snelheid;
+
+  db.collection("overtredingen")
+    .find()
+    .toArray((err, result) => {
+      if (err) throw err;
+      var stringified = JSON.stringify(result);
+      var Overtredinglist = JSON.parse(stringified);
+
+      console.log("TCL: Overtredinglist", Overtredinglist);
+      //console.log("TCL: result", result);
+
+      var list2 = [];
+
+      for (var i = 0; i < Overtredinglist.length; i++) {
+        //  console.log("TCL: Overtredinglist[i]", Overtredinglist[i].opnameplaats_straat);
+        if (Overtredinglist[i].aantal_overtredingen_snelheid >= aantal_overtredingen_snelheid) {
+          list2.push(Overtredinglist[i]);
+        }
+      }
+
+      res.render("search_result2.ejs", { list2 });
     });
 });

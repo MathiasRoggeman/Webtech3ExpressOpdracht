@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Overtreding</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h2>RESULT</h2>
+    <ul class="post">
+      <% for(var i=0; i < list2.length; i++) {%>
+      <li class="post">
+        <span> datum_vaststelling: <%= list2[i].datum_vaststelling %></span><br />
+        <span>opnameplaats_straat : <%= list2[i].opnameplaats_straat %></span><br />
+        <span>aantal_overtredingen_snelheid: <%= list2[i].aantal_overtredingen_snelheid %></span><br />
+        <span>aantal_overtredingen_roodlicht: <%= list2[i].aantal_overtredingen_roodlicht%></span><br />
+      </li>
+      <% } %>
+    </ul>
+  </body>
+</html>
