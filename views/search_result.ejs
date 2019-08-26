@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang='en'>
-<head>
-  <meta charset='UTF-8'>
-  <title>Pokemon</title>
-  <link rel='stylesheet' href='styles.css'>
-</head>
-<body>
-  <h2>All Pokemon</h2>
-  <ul class='post'>
-  <% for(var i=0; i < list.length; i++) {%>
-    <li class='post'>
-      <span><%= list[i] %></span>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Overtreding</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h2>RESULT</h2>
+    <ul class="post">
+      <% for(var i=0; i < list.length; i++) {%>
+      <li class="post">
+        <span> datum_vaststelling: <%= list[i].datum_vaststelling %></span><br />
+        <span>opnameplaats_straat : <%= list[i].opnameplaats_straat %></span><br />
+        <span>aantal_overtredingen_snelheid: <%= list[i].aantal_overtredingen_snelheid %></span><br />
+        <span>aantal_overtredingen_roodlicht: <%= list[i].aantal_overtredingen_roodlicht%></span><br />
       </li>
-  <% } %>
-  </ul>
-
-</body>
+      <% } %>
+    </ul>
+  </body>
 </html>
