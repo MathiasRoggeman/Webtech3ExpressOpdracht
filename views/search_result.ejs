@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Pokemon</title>
+  <link rel='stylesheet' href='styles.css'>
+</head>
+<body>
+  <h2>All Pokemon</h2>
+  <ul class='post'>
+  <% for(var i=0; i < list.length; i++) {%>
+    <li class='post'>
+      <span><%= list[i] %></span>
+      </li>
+  <% } %>
+  </ul>
+
+</body>
+</html>
